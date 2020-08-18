@@ -10,6 +10,9 @@ module.exports = {
 		path: path.resolve(__dirname, "../build/"),
 		publicPath: "",
 	},
+	resolve: {
+		extensions: [".js", ".jsx"],
+	},
 	plugins: [
 		new htmlWebpackPlugin({
 			template: "./public/index.html",
@@ -19,11 +22,9 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.js$/,
+				test: /\.j(s|sx)$/,
 				exclude: /node_modules/,
-				use: {
-					loader: "babel-loader",
-				},
+				use: "babel-loader",
 			},
 			{
 				test: /\.html$/,
